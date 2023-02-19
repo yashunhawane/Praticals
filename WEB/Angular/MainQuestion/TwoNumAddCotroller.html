@@ -1,0 +1,32 @@
+<!-- Write a program using Controllers & $scope object to find the sum of two numbers
+entered by the user.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="./angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myctrl">
+        First number : <input type="number" ng-model="num1"><br>
+        Last number : <input type="number" ng-model="num2"><br>
+
+        Full Name by Function : {{ sum()}}
+
+    </div>
+    <script>
+     var app = angular.module('myApp', []);
+    app.controller('myctrl', function($scope){
+       
+        $scope.sum = function(){
+            return $scope.num1+$scope.num2;
+        };
+    })  ;  
+    </script>
+</body>
+</html>
