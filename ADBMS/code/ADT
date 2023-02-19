@@ -1,0 +1,44 @@
+create type ADDRESS_TY as object
+(
+city varchar2(50),
+state char(20),
+zip number);
+/
+
+create type ADDRESS_TY as object
+(
+city varchar2(50),
+state char(20),
+zip number);
+/
+
+
+create table customer1
+(
+c_id number(5) primary key,
+c_name type_name,
+c_add ADDRESS_TY,
+c_phno number(10));
+
+
+insert into customer1
+values(1,type_name('Manish','Sanjay','Bagul'),ADDRESS_TY('Ambarnath','MH',421502),1122334455);
+
+
+insert into customer1
+values(2,type_name('Utkarsh','Sanjay','Bagul'),ADDRESS_TY('Thane','MH',400500),5544332211);
+
+
+select *from customer1;
+
+
+desc customer1;
+
+set describe depth2;
+desc customer1;
+
+select c.c_add.city from customer1 c where c_id=1;
+
+select c.c_name.fname from customer1 c where c_id=2;
+
+select c.c_name.fname || ' '||c.c_name.mname ||' '||c.c_name.lname from customer1 c;

@@ -1,0 +1,26 @@
+CREATE TABLE sales_hash
+(salesman_id NUMBER(5),
+salesman_name VARCHAR2(30),
+sales_amount NUMBER(10),
+week_no NUMBER(2))
+PARTITION BY HASH(salesman_id)
+PARTITIONS 4
+;
+
+
+SELECT TABLE_NAME,PARTITION_NAME FROM USER_TAB_PARTITIONS WHERE TABLESPACE_NAME='USERS';
+
+insert into sales_hash values(101,'Manish',44000,12);
+insert into sales_hash values(102,'Utkarsh',54000,18);
+
+select * from sales_hash;
+
+select * from sales_hash partition(sys_p23);
+
+
+select * from sales_hash partition(sys_p21);
+
+select * from sales_hash partition(sys_p22);
+
+select * from sales_hash partition(sys_p24);
+

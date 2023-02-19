@@ -1,0 +1,30 @@
+CREATE TABLE sales_list
+(salesman_id NUMBER(5),
+salesman_name VARCHAR2(30),
+sales_state VARCHAR2(20),
+sales_amount NUMBER(10),
+sales_date DATE)
+PARTITION BY LIST(sales_state)
+(
+PARTITION sales_west VALUES('Andheri','Boriwali'),
+PARTITION sales_Harbur VALUES('Vashi','chembur','Panvel'),
+PARTITION sales_central VALUES('Thane','Ambarnath'),
+PARTITION sales_other VALUES(DEFAULT)
+)
+enable row movement
+;
+
+
+SELECT TABLE_NAME,PARTITION_NAME FROM USER_TAB_PARTITIONS WHERE TABLESPACE_NAME='USERS';
+
+
+
+insert into sales_list values(1, 'Manish', 'Ambarnath', 23000, TO_DATE('20/02/2000','DD/MM/YYYY'));
+insert into sales_list values(2, 'Chetan', 'Ambarnath', 43000, TO_DATE('12/04/2000','DD/MM/YYYY'));
+insert into sales_list values(3, 'Utkarsh', 'Thane', 20000, TO_DATE('27/03/2000','DD/MM/YYYY'));
+insert into sales_list values(4, 'Pushkar', 'Nagar', 10000, TO_DATE('17/01/2000','DD/MM/YYYY'));
+insert into sales_list values(5, 'Suraj', 'Andheri', 70000, TO_DATE('29/03/2000','DD/MM/YYYY'));
+
+select * from sales_list;
+
+select * from sales_list partition(sales_central);

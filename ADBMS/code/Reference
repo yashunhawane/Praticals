@@ -1,0 +1,39 @@
+create type ANIMAL_TY as object
+(Breed varchar2(25),
+Name varchar2(25),
+BirthDate DATE);
+/
+
+
+create table ANIMAL of ANIMAL_TY;
+
+
+insert into ANIMAL values(
+ANIMAL_TY('CAT','TOM','01-APR-02'));
+
+insert into ANIMAL values(
+ANIMAL_TY('DOG','BENJI','03-SEP-01'));
+
+
+select REF(A) from ANIMAL A;
+
+
+create table KEEPER
+(KeeperName varchar2(25),
+AnimalKept REF ANIMAL_TY);
+
+
+set describe depth2;
+describe KEEPER
+
+
+insert into KEEPER
+select 'CATHERIN',
+REF(A)
+from ANIMAL A
+where Name='BENJI';
+
+select * from KEEPER;
+
+select KeeperName,DEREF(K.AnimalKept)
+from KEEPER K;

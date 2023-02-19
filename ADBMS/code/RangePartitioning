@@ -1,0 +1,46 @@
+CREATE TABLE sales_range (
+salesman_id NUMBER(5),
+salesman_name VARCHAR2(30),
+sales_amount Number(10),
+sales_date DATE)
+PARTITION BY RANGE(sales_date)
+(
+PARTITION sales_jan2000 VALUES LESS THAN(TO_DATE('01/02/2000', 'DD/MM/YYYY')),
+PARTITION sales_feb2000VALUESLESS THAN(TO_DATE('01/03/2000', 'DD/MM/YYYY')),
+PARTITION sales_mar2000 VALUES LESS THAN(TO_DATE('01/04/2000', 'DD/MM/YYYY')),
+PARTITION sales_apr2000 VALUESLESS THAN(TO_DATE('01/05/2000', 'DD/MM/YYYY'))
+)
+;
+
+// Check to see if the partitions are correctly built
+
+ SELECT TABLE_NAME, PARTITION_NAME FROM USER_TAB_PARTITIONS WHERE
+ TABLESPACE_NAME='USERS';
+
+
+insert into sales_range values(1, 'Manish', 25000, TO_DATE('20/02/2000','DD/MM/YYYY'));
+insert into sales_range values(2, 'Utkarsh', 35000,TO_DATE('27/02/2000','DD/MM/YYYY'));
+insert into sales_range values(3, 'Sushil', 15000, TO_DATE('25/04/2000','DD/MM/YYYY'));
+insert into sales_range values(4, 'Suraj', 70000, TO_DATE('11/03/2000','DD/MM/YYYY'));
+insert into sales_range values(5,'Pushkar', 50000,TO_DATE('17/01/2000','DD/MM/YYYY'));
+
+select *from sales_range;
+
+/////////////////////////
+
+Another Example :
+create table EmpPrac
+(emp_no integer,
+emp_name varchar2(10),
+salary integer)
+PARTITION BY RANGE(emp_no)
+(
+PARTITION E1 VALUES LESS THAN(103),
+PARTITION E2 VALUES LESS THAN(104)
+)
+10;
+
+insert into EmpPrac values(101, 'Manish', 35000);
+insert into EmpPrac values(102, 'Utkarsh', 45000);
+insert into EmpPrac values(103, 'Chetan', 25000);
+insert into EmpPrac values(103, 'Sushil', 15000);

@@ -1,0 +1,163 @@
+create table ssb1
+(emp_no integer,
+dept_no integer,
+bdate date,
+salary integer,
+comm integer,
+job varchar2(10));
+
+
+
+
+insert into ssb1
+values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job');
+Enter value for emp_no: 101
+Enter value for dept_no: 10
+Enter value for bdate: 12-jan-1982
+Enter value for salary: 22000
+Enter value for comm: 1000
+Enter value for job: clerk
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(101, 10, '12-jan-1982', 22000, 1000, 'clerk')
+
+
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 102
+Enter value for dept_no: 10
+Enter value for bdate: 13-feb-83
+Enter value for salary: 33000
+Enter value for comm: 2000
+Enter value for job: clerk
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(102, 10, '13-feb-83', 33000, 2000, 'clerk')
+
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 103
+Enter value for dept_no: 10
+Enter value for bdate: 14-mar-84
+Enter value for salary: 44000
+Enter value for comm: 200
+Enter value for job: clerk
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(103, 10, '14-mar-84', 44000, 200, 'clerk')
+
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 104
+Enter value for dept_no: 20
+Enter value for bdate: 15-apr-87
+Enter value for salary: 55000
+Enter value for comm: 3000
+Enter value for job: manager
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(104, 20, '15-apr-87', 55000, 3000, 'manager')
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 105
+Enter value for dept_no: 20
+Enter value for bdate: 14-jun-82
+Enter value for salary: 38000
+Enter value for comm: 4500
+Enter value for job: manager
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(105, 20, '14-jun-82', 38000, 4500, 'manager')
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 106
+Enter value for dept_no: 20
+Enter value for bdate: 15-aug-88
+Enter value for salary: 44000
+Enter value for comm: 500
+Enter value for job: manager
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(106, 20, '15-aug-88', 44000, 500, 'manager')
+
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 107
+Enter value for dept_no: 10
+Enter value for bdate: 31-dec-81
+Enter value for salary: 58000
+Enter value for comm: 8000
+Enter value for job: manager
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(107, 10, '31-dec-81', 58000, 8000, 'manager')
+
+
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 108
+Enter value for dept_no: 20
+Enter value for bdate: 25-jul-88
+Enter value for salary: 49000
+Enter value for comm: 700
+Enter value for job: clerk
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(108, 20, '25-jul-88', 49000, 700, 'clerk')
+
+
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 109
+Enter value for dept_no: 10
+Enter value for bdate: 20-feb-99
+Enter value for salary: 60000
+Enter value for comm: 500
+Enter value for job: manager
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(109, 10, '20-feb-99', 60000, 500, 'manager')
+
+
+r
+1 insert into ssb1
+2* values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+Enter value for emp_no: 110
+Enter value for dept_no: 20
+Enter value for bdate: 27-dec-95
+Enter value for salary: 55000
+Enter value for comm: 2500
+Enter value for job: clerk
+old 2: values(&emp_no, &dept_no, '&bdate', &salary, &comm, '&job')
+new 2: values(110, 20, '27-dec-95', 55000, 2500, 'clerk')
+
+
+
+select * from ssb1;
+
+
+SELECT dept_no, job, count(*), sum(salary)
+from ssb1
+group by rollup(dept_no, job);
+
+
+elect dept_no, job, count(*), sum(salary)
+from ssb1
+group by cube(dept_no, job);
+
+
+select emp_no, bdate,
+lead(bdate,1) over(order by bdate) as "next"
+from ssb1;
+
+
+select emp_no, bdate,
+lag(bdate,1) over(order by bdate) as "Previous" from ssb1;
+

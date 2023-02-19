@@ -1,0 +1,28 @@
+create table pentahoPrac1
+(
+emp_no numeric(5),
+fname varchar(10),
+lname varchar(10),
+salary numeric(5),
+comm numeric(3)
+);
+
+
+insert into pentahoPrac1 values(01, 'Manish', 'Bagul', 40000, 500);
+insert into pentahoPrac1 values(02, 'Utkarsh', 'Bagul', 50000, 300);
+insert into pentahoPrac1 values(03, 'Sushil', 'Desai', 30000, 400);
+insert into pentahoPrac1 values(04, 'Chetan', 'Deore', 26000, 100);
+insert into pentahoPrac1 values(05, 'Rohit', 'Bhoi', 35000, 200);
+
+
+select *from pentahoPrac1;
+
+commit;
+
+Pentaho Steps
+
+1) Sort (Sequence)
+Click on file then click on new then click on transformation
+After selecting new transformation blank workspace will appear
+Click on input then select table input and drag table input in main workspace
+Double click on table input then click on new
