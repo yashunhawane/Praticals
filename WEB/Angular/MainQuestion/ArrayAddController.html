@@ -1,0 +1,29 @@
+
+<!-- Write a program using Controllers & $scope objects to find the sum of the elements of an
+array. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Set 1.1</title>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+    <p>This is the list {{numbers}} = {{adder}}</p>
+    <button ng-click="sum()">Click me for sum of the list </button>
+    <script>
+        angular.module("myApp", []).controller("myController", ($scope)=>{
+            $scope.numbers = [1, 2, 3, 4, 5];
+            $scope.adder = 0;
+            $scope.sum = function() {
+                $scope.numbers.forEach(e => {
+                    $scope.adder += e;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
