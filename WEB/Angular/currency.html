@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="./angular.main.js"></script>
+<body>
+    <div ng-app = "MyNgApp" ng-controller="currencyCtrl">
+        <p>Price: {{price | currency}}</p>
+    </div>
+    <script>
+        angular.module('MyNgApp',[]).controller('currencyCtrl',function($scope){
+            $scope.price=1000;
+        });
+    </script>
+</body>
+</html>

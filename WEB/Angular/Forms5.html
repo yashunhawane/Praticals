@@ -1,0 +1,31 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>AngularJS Form Validation</title> 
+</head> 
+<body ng-app="formApp"> 
+<div ng-controller="FormController"> 
+<form name="form" novalidate class="css-form"> 
+Name : <input type="text" ng-model="employee.name" required/><br /> 
+E-mail : <input type="email" ng-model="employee.email" required /><br /> 
+Role : <input type="radio" ng-model="employee.role" value="development" />Development 
+<input type="radio" ng-model="employee.role" value="testing" />Testing<br /></br> 
+<input type="button" ng-click="reset()" value="Reset" /> 
+<input type="submit" ng-disabled="form.$invalid" ng-click="save(employee)" value="Submit" /> 
+</form> 
+  			<p>Employee Form = {{employee | json}}</p> 
+  			<p>Master = {{master | json}}</p> 
+</div> 
+<style type="text/css"> 
+.css-form input.ng-invalid.ng-touched { 
+background-color: #78e6fa; 
+} 
+.css-form input.ng-valid.ng-touched { 
+background-color: #78FA89; 
+} 
+</style> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script> 
+<script type="text/javascript" src="app.js"></script> 
+</body> 
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="./angular.main.js"></script>
+<body>
+    <div ng-app = "MyNgApp" ng-controller = "personCtrl">
+        <p>The first name is {{firstName | uppercase}}</p>
+        <p>The last name is {{lastName | uppercase}}</p>
+    </div>
+    <script>
+        angular.module('MyNgApp',[]).controller('personCtrl',function($scope){
+            $scope.firstName = "yash";
+            $scope.lastName = "unhawane";
+        });
+    </script>
+</body>
+</html>

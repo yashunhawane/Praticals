@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="numberCntrl">
+		<p>Number : {{ value| number : 2}}</p>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('numberCntrl', function($scope) {
+			$scope.value = 696969.696;
+		});
+	</script>
+</body>
+</html>
