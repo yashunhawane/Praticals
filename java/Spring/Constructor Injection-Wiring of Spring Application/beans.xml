@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans.xsd"> 
+   <bean id="person" class="nmitd.spring.RichPerson"> 
+   <constructor-arg value="Mukesh"/> 
+   <constructor-arg value="Ambani"/>
+    <constructor-arg> 
+    <list> 
+    <value>Mercedes E Class</value>
+    <value>Maruti Suzuki Dezire</value>
+     <value>BMW</value> 
+     </list> 
+     </constructor-arg> 
+     </bean>
+      </beans>
